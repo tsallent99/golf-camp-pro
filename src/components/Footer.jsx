@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Logo from './Logo'
 
 const links = [
@@ -16,7 +17,7 @@ export default function Footer() {
           <div>
             <Logo variant="horizontal" tone="light" className="h-8 w-auto mb-4" />
             <p className="font-mono text-xs text-chalk/40 max-w-xs">
-              info@midamgolfretreat.com
+              sales@midamgolfcamp.com
             </p>
           </div>
 
@@ -35,9 +36,17 @@ export default function Footer() {
 
         <div className="h-px bg-chalk/10 mt-12 mb-8" />
 
-        <p className="font-mono text-[10px] text-chalk/30 uppercase tracking-widest">
-          &copy; {new Date().getFullYear()} MidAm Golf Retreat
-        </p>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <p className="font-mono text-[10px] text-chalk/30 uppercase tracking-widest">
+            &copy; {new Date().getFullYear()} MidAm Golf Camp
+          </p>
+          <Link
+            to="/privacy"
+            className="font-mono text-[10px] text-chalk/30 uppercase tracking-widest hover:text-chalk/60 transition-colors"
+          >
+            Privacy Policy
+          </Link>
+        </div>
       </div>
     </footer>
   )
