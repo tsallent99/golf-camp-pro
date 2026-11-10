@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { trackLead } from '../lib/pixel'
+import config from '../lib/config'
 
 const benefits = [
   'First to know when registration opens',
@@ -27,8 +28,8 @@ export default function Waitlist() {
     }
 
     try {
-      // TODO: Create Web3Forms access key and add to .env as VITE_WEB3FORMS_KEY
-      const apiKey = import.meta.env.VITE_WEB3FORMS_KEY
+      // TODO: Create Web3Forms access key and add to config.js
+      const apiKey = config.web3formsKey
       if (!apiKey) {
         console.warn('Web3Forms API key not set. Form submission simulated.')
         setSubmitted(true)

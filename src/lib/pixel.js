@@ -1,4 +1,6 @@
-const PIXEL_ID = import.meta.env.VITE_META_PIXEL_ID
+import config from './config'
+
+const PIXEL_ID = config.metaPixelId
 
 let initialized = false
 

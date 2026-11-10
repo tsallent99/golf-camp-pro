@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import SeoHead from '../components/SeoHead'
 import DataTag from '../components/DataTag'
+import config from '../lib/config'
 
 /* ───── Image Slider ───── */
 function ImageSlider({ images }) {
@@ -166,8 +167,8 @@ function RegisterForm() {
     }
 
     try {
-      // TODO: Create Web3Forms access key and add to .env as VITE_WEB3FORMS_KEY
-      const apiKey = import.meta.env.VITE_WEB3FORMS_KEY
+      // TODO: Create Web3Forms access key and add to config.js
+      const apiKey = config.web3formsKey
       if (!apiKey) {
         console.warn('Web3Forms API key not set. Form submission simulated.')
         setSubmitted(true)
