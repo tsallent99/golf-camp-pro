@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { trackLead } from '../lib/pixel'
 
 const benefits = [
   'First to know when registration opens',
@@ -31,6 +32,7 @@ export default function Waitlist() {
       if (!apiKey) {
         console.warn('Web3Forms API key not set. Form submission simulated.')
         setSubmitted(true)
+        trackLead()
         setLoading(false)
         return
       }
@@ -50,6 +52,7 @@ export default function Waitlist() {
 
       if (response.ok) {
         setSubmitted(true)
+        trackLead()
       } else {
         setError('Something went wrong. Please try again.')
       }

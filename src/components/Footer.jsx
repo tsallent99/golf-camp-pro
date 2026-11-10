@@ -40,12 +40,20 @@ export default function Footer() {
           <p className="font-mono text-[10px] text-chalk/30 uppercase tracking-widest">
             &copy; {new Date().getFullYear()} MidAm Golf Camp
           </p>
-          <Link
-            to="/privacy"
-            className="font-mono text-[10px] text-chalk/30 uppercase tracking-widest hover:text-chalk/60 transition-colors"
-          >
-            Privacy Policy
-          </Link>
+          <div className="flex gap-6">
+            <Link
+              to="/privacy"
+              className="font-mono text-[10px] text-chalk/30 uppercase tracking-widest hover:text-chalk/60 transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <button
+              onClick={() => window.dispatchEvent(new Event('open-cookie-banner'))}
+              className="font-mono text-[10px] text-chalk/30 uppercase tracking-widest hover:text-chalk/60 transition-colors"
+            >
+              Cookie Settings
+            </button>
+          </div>
         </div>
       </div>
     </footer>
