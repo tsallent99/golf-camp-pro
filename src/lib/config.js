@@ -6,7 +6,7 @@
  */
 const config = {
   metaPixelId: '1409370891268563',
-  web3formsKey: import.meta.env.VITE_WEB3FORMS_KEY || '',
+  web3formsKey: '1c4e182c-80a9-48ee-94e5-8705b382ce5f',
 }
 
 export default config
