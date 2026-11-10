@@ -1,88 +1,103 @@
-import { motion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import DataTag from './DataTag'
+
+const scorecardDays = [
+  { id: 'D1', label: 'ASSESS', highlight: false },
+  { id: 'D2', label: 'DUNES', highlight: false },
+  { id: 'D3', label: 'FOREST', highlight: true },
+  { id: 'D4', label: 'STRATEGY', highlight: false },
+  { id: 'D5', label: 'TOURNAMENT', highlight: false },
+]
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image + overlay */}
-      <div className="absolute inset-0">
-        <img
-          src="/images/forest-course.webp"
-          alt="Empordà Golf Resort - Forest Course"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-forest-900/80 via-forest-900/70 to-forest-900/90" />
+    <section className="relative min-h-screen bg-pine overflow-hidden flex flex-col">
+      {/* Giant "5" watermark */}
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-[10%] pointer-events-none select-none" aria-hidden="true">
+        <svg width="500" height="700" viewBox="0 0 500 700" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[320px] h-[450px] md:w-[500px] md:h-[700px]">
+          <text
+            x="250"
+            y="550"
+            textAnchor="middle"
+            fontFamily="Archivo, system-ui, sans-serif"
+            fontWeight="900"
+            fontSize="700"
+            fill="none"
+            stroke="#2A5A4A"
+            strokeWidth="2"
+            style={{ fontStretch: '66%' }}
+          >
+            5
+          </text>
+        </svg>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <h2 className="text-gold-400 font-medium tracking-[0.2em] uppercase text-sm mb-6">
-            Premium Golf Training in Barcelona
-          </h2>
-        </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-4xl sm:text-5xl md:text-7xl font-bold text-white leading-tight mb-6"
-        >
-          Transform Your Game{' '}
-          <span className="text-gold-400">in 5 Days</span>
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed"
-        >
-          Intensive, PGA-certified golf camps at Empordà Golf Resort, Barcelona.
-          Expert coaching across 36 holes of Links and Forest courses, with
-          a proven methodology for real improvement.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <a
-            href="#camps"
-            className="px-8 py-4 bg-gold-400 hover:bg-gold-500 text-forest-900 font-semibold rounded-lg transition-all hover:shadow-xl hover:shadow-gold-400/20 hover:-translate-y-0.5"
-          >
-            View Upcoming Camps
-          </a>
-          <a
-            href="#features"
-            className="px-8 py-4 border border-white/20 hover:border-white/40 text-white font-medium rounded-lg transition-all hover:bg-white/5"
-          >
-            Learn More
-          </a>
-        </motion.div>
+      {/* EMPORDÀ GOLF tag — top right */}
+      <div className="absolute top-24 md:top-28 right-4 sm:right-8 lg:right-12">
+        <DataTag variant="outline" className="text-chalk/50">EMPORDÀ GOLF</DataTag>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.a
-        href="#features"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 hover:text-white/80 transition-colors"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-        >
-          <ChevronDown size={28} />
-        </motion.div>
-      </motion.a>
+      {/* Main content */}
+      <div className="relative z-10 flex-1 flex flex-col justify-center max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-32">
+        <h1 className="font-display font-extrabold font-condensed uppercase text-chalk text-[clamp(3rem,8vw,7rem)] leading-[0.92] mb-0 max-w-3xl">
+          MASTER YOUR
+          <br />
+          GAME IN{' '}
+          <span className="text-flag">5</span> DAYS.
+        </h1>
+      </div>
+
+      {/* Scorecard strip */}
+      <div className="relative z-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="border-t border-chalk/20" />
+          <div className="grid grid-cols-5">
+            {scorecardDays.map((day) => (
+              <div
+                key={day.id}
+                className={`py-4 md:py-5 border-r border-chalk/10 last:border-r-0 ${
+                  day.highlight ? 'bg-flag/15' : ''
+                }`}
+              >
+                <p className={`font-display font-extrabold font-condensed text-2xl md:text-4xl ${
+                  day.highlight ? 'text-flag' : 'text-chalk'
+                }`}>
+                  {day.id}
+                </p>
+                <p className="font-mono text-[9px] md:text-[10px] uppercase tracking-[0.15em] text-chalk/40 mt-0.5">
+                  {day.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom content */}
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 md:pb-14 pt-6 md:pt-8">
+        <p className="text-chalk/70 text-base md:text-lg max-w-lg mb-8 leading-relaxed">
+          A 5-day golf camp for adults. Daily lessons with PGA coaches
+          and TrackMan. Girona, Spain.
+        </p>
+
+        <div className="h-px bg-chalk/15 mb-6 max-w-lg" />
+
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 max-w-lg">
+          <div className="space-y-1">
+            <p className="font-mono text-xs text-chalk/50 tracking-[0.15em]">22–26 JUN 2027</p>
+            <p className="font-mono text-xs text-chalk/50 tracking-[0.15em]">MAX 20 PLAYERS</p>
+          </div>
+          <a
+            href="#waitlist"
+            onClick={(e) => {
+              e.preventDefault()
+              document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })
+            }}
+            className="inline-flex items-center px-8 py-4 bg-flag hover:bg-flag-ink text-chalk font-display font-bold uppercase tracking-wide transition-colors text-sm"
+          >
+            JOIN THE WAITLIST →
+          </a>
+        </div>
+      </div>
     </section>
   )
 }

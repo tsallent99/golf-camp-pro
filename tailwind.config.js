@@ -5,35 +5,43 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    borderRadius: {
+      none: '0',
+      DEFAULT: '0',
+      sm: '2px',
+      full: '9999px',
+    },
     extend: {
       colors: {
-        forest: {
-          50: '#f0f7f2',
-          100: '#d9eede',
-          200: '#b5ddbf',
-          300: '#84c496',
-          400: '#52a86c',
-          500: '#2d8a4e',
-          600: '#1f6e3c',
-          700: '#1a472a',
-          800: '#163b24',
-          900: '#13311e',
+        pine: {
+          DEFAULT: '#12302A',
+          ink: '#0A1F1A',
         },
-        gold: {
-          50: '#fdf8ec',
-          100: '#f9eece',
-          200: '#f3dc9c',
-          300: '#ecc563',
-          400: '#c9a84c',
-          500: '#b5923a',
-          600: '#9a742e',
-          700: '#7d5827',
-          800: '#694925',
-          900: '#5b3e24',
+        needle: {
+          DEFAULT: '#2A5A4A',
+          ink: '#1E4236',
+        },
+        sand: {
+          DEFAULT: '#E8DED0',
+          ink: '#6B5F52',
+        },
+        chalk: {
+          DEFAULT: '#F5F2ED',
+          ink: '#3D3A36',
+        },
+        sky: {
+          DEFAULT: '#6BA4C9',
+          ink: '#3A6D8C',
+        },
+        flag: {
+          DEFAULT: '#D94F2B',
+          ink: '#A13B20',
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Archivo', 'system-ui', 'sans-serif'],
+        sans: ['Archivo', 'system-ui', 'sans-serif'],
+        mono: ['"DM Mono"', 'ui-monospace', 'monospace'],
       },
     },
   },

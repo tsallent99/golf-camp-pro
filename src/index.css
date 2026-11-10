@@ -7,22 +7,38 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Archivo', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 @layer utilities {
-  .glass {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+  .font-condensed {
+    font-stretch: 66%;
   }
-  .glass-light {
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+  .font-condensed-75 {
+    font-stretch: 75%;
+  }
+  .font-condensed-85 {
+    font-stretch: 85%;
+  }
+  .font-tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer base {
+  *:focus-visible {
+    outline: 2px solid #D94F2B;
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

@@ -1,26 +1,19 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
+import Logo from './Logo'
 
 const navLinks = [
-  { label: 'Features', href: '/#features' },
+  { label: 'The camp', href: '/#why-midam' },
   { label: 'Schedule', href: '/#schedule' },
-  { label: 'Instructors', href: '/#instructors' },
-  { label: 'Pricing', href: '/#camps' },
-  { label: 'Contact', href: '/#waitlist' },
+  { label: 'Coaches', href: '/#coaches' },
+  { label: 'Venue', href: '/#venue' },
 ]
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
   const isHome = location.pathname === '/'
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   function handleNavClick(e, href) {
     setMobileOpen(false)
@@ -32,49 +25,42 @@ export default function Navbar() {
   }
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-forest-700/95 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
-      }`}
-    >
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-pine">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <span className="text-xl md:text-2xl font-bold text-white tracking-tight">
-              MIDAM Golf<span className="text-gold-400"> Retreat</span>
-            </span>
+          <Link to="/" className="flex items-center">
+            <Logo variant="horizontal" tone="light" className="h-8 md:h-9 w-auto" />
           </Link>
 
-          {/* Desktop links */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm font-medium text-white/80 hover:text-gold-400 transition-colors"
+                className="font-mono text-xs uppercase tracking-widest text-chalk/70 hover:text-chalk transition-colors"
               >
                 {link.label}
               </a>
             ))}
           </div>
 
-          {/* Desktop CTA */}
           <a
             href={isHome ? '#waitlist' : '/#waitlist'}
-            onClick={(e) => handleNavClick(e, '/#waitlist')}
-            className="hidden md:inline-flex items-center px-5 py-2.5 bg-gold-400 hover:bg-gold-500 text-forest-900 text-sm font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-gold-400/25"
+            onClick={(e) => {
+              if (isHome) {
+                e.preventDefault()
+                document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })
+              }
+            }}
+            className="hidden md:inline-flex items-center px-5 py-2.5 bg-flag hover:bg-flag-ink text-chalk text-sm font-semibold transition-colors"
           >
-            Join Waitlist
+            Join the waitlist →
           </a>
 
-          {/* Mobile menu button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden text-white p-2"
+            className="md:hidden text-chalk p-2"
             aria-expanded={mobileOpen}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           >
@@ -83,26 +69,31 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-forest-700/95 backdrop-blur-md border-t border-white/10">
+        <div className="md:hidden bg-pine border-t border-chalk/10">
           <div className="px-4 py-4 space-y-3">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="block text-sm font-medium text-white/80 hover:text-gold-400 transition-colors py-2"
+                className="block font-mono text-xs uppercase tracking-widest text-chalk/70 hover:text-chalk transition-colors py-2"
               >
                 {link.label}
               </a>
             ))}
             <a
               href={isHome ? '#waitlist' : '/#waitlist'}
-              onClick={(e) => handleNavClick(e, '/#waitlist')}
-              className="block text-center px-5 py-2.5 bg-gold-400 hover:bg-gold-500 text-forest-900 text-sm font-semibold rounded-lg transition-all mt-2"
+              onClick={(e) => {
+                setMobileOpen(false)
+                if (isHome) {
+                  e.preventDefault()
+                  document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })
+                }
+              }}
+              className="block text-center px-5 py-2.5 bg-flag hover:bg-flag-ink text-chalk text-sm font-semibold transition-colors mt-2"
             >
-              Join Waitlist
+              Join the waitlist →
             </a>
           </div>
         </div>

@@ -1,28 +1,34 @@
 import SeoHead from '../components/SeoHead'
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
-import Features from '../components/Features'
-import NextCamps from '../components/NextCamps'
-import About from '../components/About'
-import Instructors from '../components/Instructors'
+import WhyMidAm from '../components/WhyMidAm'
+import Courses from '../components/Courses'
+import Technology from '../components/Technology'
+import Schedule from '../components/Schedule'
+import NextCamp from '../components/NextCamp'
+import Coaches from '../components/Coaches'
+import Venue from '../components/Venue'
 import Waitlist from '../components/Waitlist'
 import Footer from '../components/Footer'
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-chalk">
       <SeoHead
-        title="MIDAM Golf Retreat — Premium Golf Training in Barcelona | Empordà Golf Resort"
-        description="Intensive 5-day PGA-certified golf camps at Empordà Golf Resort, Costa Brava. Expert coaching across 36 holes, full board, accommodation, and airport transfers included. Max 20 players."
+        title="MidAm Golf Retreat — Intensive golf training at Empordà Golf Resort, Girona"
+        description="Five-day residential golf camp at Empordà Golf Resort, Costa Brava. PGA coaching, TrackMan analysis, 36 holes across Forest and Dunes courses. Max 20 players. June 2027."
         canonical="https://midamgolfretreat.com/"
       />
       <Navbar />
       <main>
         <Hero />
-        <Features />
-        <NextCamps />
-        <About />
-        <Instructors />
+        <WhyMidAm />
+        <Courses />
+        <Technology />
+        <Schedule />
+        <NextCamp />
+        <Coaches />
+        <Venue />
         <Waitlist />
       </main>
       <Footer />
