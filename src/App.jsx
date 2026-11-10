@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage'
 import CampDetail from './pages/CampDetail'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import CookieBanner from './components/CookieBanner'
+import { Analytics } from '@vercel/analytics/react'
 import { initPixel, trackPageView, hasConsent } from './lib/pixel'
 
 function ScrollAndTrack() {
@@ -44,6 +45,7 @@ function App() {
         <Route path="/privacy" element={<PrivacyPolicy />} />
       </Routes>
       <CookieBanner />
+      <Analytics />
     </BrowserRouter>
   )
 }
