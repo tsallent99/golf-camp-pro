@@ -46,6 +46,7 @@ export default function Waitlist() {
           subject: 'New waitlist sign-up · MidAm Golf Retreat',
           name: data.get('name'),
           email: data.get('email'),
+          phone: `${data.get('country_code')} ${data.get('phone')}`,
           city: data.get('city'),
           handicap_level: data.get('handicap'),
         }),
@@ -127,6 +128,51 @@ export default function Waitlist() {
                     placeholder="john@example.com"
                     className="w-full px-4 py-3 bg-white border border-pine/20 text-sm text-pine focus:outline-none focus:border-pine transition-colors"
                   />
+                </div>
+                <div>
+                  <label className="block font-mono text-xs uppercase tracking-widest text-pine/60 mb-1.5">
+                    Phone
+                  </label>
+                  <div className="flex gap-2">
+                    <select
+                      name="country_code"
+                      className="w-28 px-3 py-3 bg-white border border-pine/20 text-sm text-pine focus:outline-none focus:border-pine transition-colors"
+                    >
+                      <option value="+1">+1 US</option>
+                      <option value="+44">+44 UK</option>
+                      <option value="+34">+34 ES</option>
+                      <option value="+33">+33 FR</option>
+                      <option value="+49">+49 DE</option>
+                      <option value="+39">+39 IT</option>
+                      <option value="+351">+351 PT</option>
+                      <option value="+52">+52 MX</option>
+                      <option value="+55">+55 BR</option>
+                      <option value="+54">+54 AR</option>
+                      <option value="+57">+57 CO</option>
+                      <option value="+56">+56 CL</option>
+                      <option value="+81">+81 JP</option>
+                      <option value="+82">+82 KR</option>
+                      <option value="+86">+86 CN</option>
+                      <option value="+91">+91 IN</option>
+                      <option value="+61">+61 AU</option>
+                      <option value="+64">+64 NZ</option>
+                      <option value="+41">+41 CH</option>
+                      <option value="+43">+43 AT</option>
+                      <option value="+31">+31 NL</option>
+                      <option value="+32">+32 BE</option>
+                      <option value="+46">+46 SE</option>
+                      <option value="+47">+47 NO</option>
+                      <option value="+45">+45 DK</option>
+                      <option value="+353">+353 IE</option>
+                    </select>
+                    <input
+                      type="tel"
+                      name="phone"
+                      required
+                      placeholder="612 345 678"
+                      className="flex-1 px-4 py-3 bg-white border border-pine/20 text-sm text-pine focus:outline-none focus:border-pine transition-colors"
+                    />
+                  </div>
                 </div>
                 <div>
                   <label className="block font-mono text-xs uppercase tracking-widest text-pine/60 mb-1.5">
